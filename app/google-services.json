@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "619900708149",
+    "project_id": "thuchiapp-381ef",
+    "storage_bucket": "thuchiapp-381ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619900708149:android:68861024947105976ad87c",
+        "android_client_info": {
+          "package_name": "com.example.thuchiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619900708149-117vgmepmdgvalbumhaqtdjnkcpu5k24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thuchiapp",
+            "certificate_hash": "e3bda913e77e7f41c30f791c5a68c4e3717164eb"
+          }
+        },
+        {
+          "client_id": "619900708149-hrp0pokmuqk8b6a3er9np3li56oekiip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_Ct1C1E73lx3rYVl-PARXGW_8RHeyY2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619900708149-hrp0pokmuqk8b6a3er9np3li56oekiip.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

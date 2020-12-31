@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Quản lý thu chi cá nhân</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >3 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">Chi</string>
+    <string name="tab_text_2">Thu</string>
+    <string name="tab_text_3">Thống kê</string>
+    <string name="tab_text_4">Cài Đặt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="FirstName">Họ</string>
+    <string name="Password">Mật khẩu</string>
+    <string name="Save">lưu</string>
+    <string name="LastName">Tên</string>
+    <string name="MoneyPerDay">Số tiền thông báo khi sài quá trong 1 ngày</string>
+    <string name="EditInformation">Chỉnh sửa thông tin</string>
+    <string name="Login">Đăng nhập</string>
+    <string name="CreateAccount">Tạo tài khoản</string>
+</resources>
