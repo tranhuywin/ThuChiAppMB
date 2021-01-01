@@ -107,7 +107,7 @@ public class CaiDat extends Fragment  {
                 user.updatePassword(Password_et.getText().toString());
                 FirebaseAuth.getInstance().updateCurrentUser(user);
 
-                Toast.makeText(getActivity(), "Cập nhập thành công",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Đã cập nhập thành công",Toast.LENGTH_SHORT).show();
         }
         });
 
