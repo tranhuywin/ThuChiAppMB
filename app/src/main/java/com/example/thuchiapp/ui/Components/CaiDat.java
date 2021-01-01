@@ -110,6 +110,7 @@ public class CaiDat extends Fragment  {
                 Toast.makeText(getActivity(), "Cập nhập thành công",Toast.LENGTH_SHORT).show();
         }
         });
+
         firebaseAuth =FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         assert user != null;
