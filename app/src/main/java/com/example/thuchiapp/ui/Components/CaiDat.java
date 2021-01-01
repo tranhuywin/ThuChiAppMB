@@ -81,7 +81,6 @@ public class CaiDat extends Fragment  {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
     }
 
     @Override
@@ -92,15 +91,23 @@ public class CaiDat extends Fragment  {
 
         Save_btn = (Button) view.findViewById(R.id.SaveSetting);
         Email_et = (EditText) view.findViewById(R.id.EmailSetting);
-        Password_et = (EditText) view.findViewById(R.id.password);
+        Password_et = (EditText) view.findViewById(R.id.passwordSetting);
         Money_et = (EditText) view.findViewById(R.id.MoneySetting);
         FullName_et= (EditText) view.findViewById(R.id.FullNameSetting);
 
         Save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: handle save
-                Toast.makeText(getActivity(), "Lưu thành công",Toast.LENGTH_SHORT).show();
+                LoggedInUser loggedInUser = new LoggedInUser(Email_et.getText().toString(),Password_et.getText().toString(),Integer.valueOf(Money_et.getText().toString()),FullName_et.getText().toString());
+                databaseReference = firebaseDatabase.getReference("Users/" +firebaseAuth.getCurrentUser().getUid());
+                databaseReference.setValue(loggedInUser);
+
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                user.updateEmail(Email_et.getText().toString());
+                user.updatePassword(Password_et.getText().toString());
+                FirebaseAuth.getInstance().updateCurrentUser(user);
+
+                Toast.makeText(getActivity(), "Cập nhập thành công",Toast.LENGTH_SHORT).show();
         }
         });
         firebaseAuth =FirebaseAuth.getInstance();
