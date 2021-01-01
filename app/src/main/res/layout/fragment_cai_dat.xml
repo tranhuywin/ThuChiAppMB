@@ -19,7 +19,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/Email"
+        android:id="@+id/EmailSetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -31,7 +31,7 @@
         android:textColorLink="#fa5246" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwordSetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -42,7 +42,7 @@
         android:selectAllOnFocus="true"
         android:textColorLink="#fa5246" />
     <EditText
-        android:id="@+id/FullName"
+        android:id="@+id/FullNameSetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -54,7 +54,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:id="@+id/Money"
+        android:id="@+id/MoneySetting"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="276dp"
@@ -65,7 +65,7 @@
         android:drawableEnd="@drawable/ic_money"/>
 
     <Button
-        android:id="@+id/Save"
+        android:id="@+id/SaveSetting"
         android:layout_width="138dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"

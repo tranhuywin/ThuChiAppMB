@@ -3,14 +3,18 @@ package com.example.thuchiapp.ui.Components;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thuchiapp.R;
+import com.example.thuchiapp.data.model.LoggedInUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,7 +42,8 @@ public class CaiDat extends Fragment  {
     private EditText Password_et;
     private EditText Money_et;
 
-
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();;
+    DatabaseReference databaseReference;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -73,6 +80,8 @@ public class CaiDat extends Fragment  {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -81,16 +90,16 @@ public class CaiDat extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cai_dat, container, false);
 
-        Save_btn = (Button) view.findViewById(R.id.Save);
-        //FirstName_et = (EditText) view.findViewById(R.id.FirstName);
-        //LastName_et = (EditText) view.findViewById(R.id.LastName);
-        Email_et = (EditText) view.findViewById(R.id.Email);
+        Save_btn = (Button) view.findViewById(R.id.SaveSetting);
+        Email_et = (EditText) view.findViewById(R.id.EmailSetting);
         Password_et = (EditText) view.findViewById(R.id.password);
-        Money_et = (EditText) view.findViewById(R.id.Money);
+        Money_et = (EditText) view.findViewById(R.id.MoneySetting);
+        FullName_et= (EditText) view.findViewById(R.id.FullNameSetting);
 
         Save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO: handle save
                 Toast.makeText(getActivity(), "Lưu thành công",Toast.LENGTH_SHORT).show();
         }
         });
@@ -98,18 +107,20 @@ public class CaiDat extends Fragment  {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         assert user != null;
         Email_et.setText(user.getEmail());
-        if(user.getDisplayName() != null)
-            FullName_et.setText(user.getDisplayName());
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Money");
+        databaseReference = firebaseDatabase.getReference("Users/"+user.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Money_et.setText(dataSnapshot.getValue().toString());
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                LoggedInUser loggedInUser = new LoggedInUser();
+                loggedInUser = dataSnapshot.getValue(LoggedInUser.class);
+                FullName_et.setText(loggedInUser.getHoVaTen());
+                Money_et.setText(String.valueOf(loggedInUser.getMoneyNotification()));
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(getActivity(), error.toString(),Toast.LENGTH_SHORT).show();
 
             }
         });

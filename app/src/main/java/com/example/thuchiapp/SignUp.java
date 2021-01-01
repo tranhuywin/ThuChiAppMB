@@ -87,8 +87,10 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-                            LoggedInUser loggedInUser = new LoggedInUser(Email_et.getText().toString(),Password_et.getText().toString(),100000,"admin");
-                            databaseReference = firebaseDatabase.getReference("Users");
+                            int money = 100000;
+                            String FullName = "Admin";
+                            LoggedInUser loggedInUser = new LoggedInUser(Email_et.getText().toString(),Password_et.getText().toString(),money,FullName);
+                            databaseReference = firebaseDatabase.getReference("Users/" +firebaseAuth.getCurrentUser().getUid());
                             databaseReference.setValue(loggedInUser);
 
                             Toast.makeText(getApplicationContext(),"Tạo tài khoản thành công",Toast.LENGTH_SHORT).show();

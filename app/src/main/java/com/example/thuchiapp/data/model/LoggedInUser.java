@@ -5,45 +5,27 @@ package com.example.thuchiapp.data.model;
  */
 public class LoggedInUser {
 
-    private String Password;
-    private String Email;
-    private int MoneyNotification;
-    private String HoVaTen;
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public void setMoneyNotification(int moneyNotification) {
-        MoneyNotification = moneyNotification;
-    }
-
-    public void setHoVaTen(String hoVaTen) {
-        HoVaTen = hoVaTen;
-    }
+    private String password;
+    private String email;
+    private int moneyNotification;
+    private String hoVaTen;
 
     public int getMoneyNotification() {
-        return MoneyNotification;
+        return moneyNotification;
     }
 
     public String getHoVaTen() {
-        return HoVaTen;
+        return hoVaTen;
     }
     public String getEmail() {
-        return Email;
+        return email;
     }
-    public String getPassword(){return Password; }
-
+    public String getPassword(){return password; }
+    public LoggedInUser(){};
     public LoggedInUser(String Email, String Password, int MoneyNotification, String HoVaTen) {
-        this.Email = Email;
-        this.Password = Password;
-        this.MoneyNotification = MoneyNotification;
-        this.HoVaTen = HoVaTen;
+        this.email = Email;
+        this.password = Password;
+        this.moneyNotification = MoneyNotification;
+        this.hoVaTen = HoVaTen;
     }
-
-
 }
