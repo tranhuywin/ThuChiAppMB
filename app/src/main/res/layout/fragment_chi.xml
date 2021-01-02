@@ -11,4 +11,28 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
+    <EditText
+    android:id="@+id/tienChi"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="96dp"
+    android:layout_marginEnd="50dp"
+    android:hint="Số tiền"
+    android:inputType="number"
+    android:selectAllOnFocus="true"
+    android:textColorLink="#fa5246" />
+
+    <Button
+        android:id="@+id/SaveChi"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#fa5246"
+        android:drawableStart="@drawable/ic_save"
+        android:outlineSpotShadowColor="#FFFFFF"
+        android:text="@string/Save"
+        android:textSize="20sp" />
+
 </FrameLayout>

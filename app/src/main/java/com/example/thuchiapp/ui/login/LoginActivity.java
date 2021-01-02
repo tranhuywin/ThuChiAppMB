@@ -31,11 +31,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         //final DatabaseHelper db = new DatabaseHelper(this);
         //loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory()).get(LoginViewModel.class);
-        /*if(firebaseAuth.getCurrentUser() != null)
+        if(firebaseAuth.getCurrentUser() != null)
         {
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
-        }*/
+        }
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);

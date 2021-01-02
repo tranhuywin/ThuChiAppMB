@@ -1,5 +1,6 @@
 package com.example.thuchiapp.ui.Components;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,8 +14,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thuchiapp.MainActivity;
 import com.example.thuchiapp.R;
 import com.example.thuchiapp.data.model.LoggedInUser;
+import com.example.thuchiapp.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +40,7 @@ public class CaiDat extends Fragment  {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Button Save_btn;
+    private Button LogOut_btn;
     private EditText FullName_et;
     private EditText Email_et;
     private EditText Password_et;
@@ -89,11 +93,12 @@ public class CaiDat extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cai_dat, container, false);
 
-        Save_btn = (Button) view.findViewById(R.id.SaveSetting);
+        Save_btn = (Button) view.findViewById(R.id.saveSetting);
         Email_et = (EditText) view.findViewById(R.id.EmailSetting);
         Password_et = (EditText) view.findViewById(R.id.passwordSetting);
         Money_et = (EditText) view.findViewById(R.id.MoneySetting);
         FullName_et= (EditText) view.findViewById(R.id.FullNameSetting);
+        LogOut_btn = (Button) view.findViewById(R.id.LogOutSetting);
 
         Save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +115,14 @@ public class CaiDat extends Fragment  {
                 Toast.makeText(getActivity(), "Đã cập nhập thành công",Toast.LENGTH_SHORT).show();
         }
         });
+        LogOut_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //firebaseAuth.updateCurrentUser().;
+                //Intent intent = new Intent(getActivity(), LoginActivity.class);
+                //startActivity(intent);
+            }
+        });
 
         firebaseAuth =FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -122,6 +135,7 @@ public class CaiDat extends Fragment  {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 LoggedInUser loggedInUser = new LoggedInUser();
                 loggedInUser = dataSnapshot.getValue(LoggedInUser.class);
+
                 FullName_et.setText(loggedInUser.getHoVaTen());
                 Money_et.setText(String.valueOf(loggedInUser.getMoneyNotification()));
             }

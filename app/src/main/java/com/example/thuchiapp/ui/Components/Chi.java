@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.thuchiapp.R;
 
@@ -23,7 +26,8 @@ public class Chi extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    Button SaveChi_btn;
+    EditText Tien_et;
     public Chi() {
         // Required empty public constructor
     }
@@ -58,7 +62,16 @@ public class Chi extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chi, container, false);
+        View view = inflater.inflate(R.layout.fragment_chi, container, false);
+        SaveChi_btn = (Button)view.findViewById(R.id.SaveChi);
+        Tien_et = (EditText)view.findViewById(R.id.tienChi) ;
+
+        SaveChi_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), Tien_et.getText().toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        return view;
     }
 }

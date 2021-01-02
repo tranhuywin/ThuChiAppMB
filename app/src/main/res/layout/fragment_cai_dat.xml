@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Components.CaiDat">
+
+    <Button
+        android:id="@+id/saveSetting"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#fa5246"
+        android:drawableStart="@drawable/ic_save"
+        android:outlineSpotShadowColor="#FFFFFF"
+        android:text="@string/Save"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -65,15 +78,22 @@
         android:drawableEnd="@drawable/ic_money"/>
 
     <Button
-        android:id="@+id/SaveSetting"
-        android:layout_width="138dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="10dp"
+        android:id="@+id/LogOutSetting"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="#fa5246"
-        android:drawableStart="@drawable/ic_save"
+        android:drawableStart="@drawable/ic_baseline_exit_to_app_24"
         android:outlineSpotShadowColor="#FFFFFF"
-        android:text="@string/Save"
-        android:textSize="20sp" />
+        android:textSize="10sp" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="#fa5246"
+        app:srcCompat="@android:drawable/ic_input_add"/>
 
 </FrameLayout>
