@@ -21,8 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
 
-    private LoginViewModel loginViewModel;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         firebaseAuth =FirebaseAuth.getInstance();

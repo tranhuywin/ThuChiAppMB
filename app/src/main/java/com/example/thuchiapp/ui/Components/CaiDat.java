@@ -2,21 +2,20 @@ package com.example.thuchiapp.ui.Components;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.thuchiapp.MainActivity;
 import com.example.thuchiapp.R;
-import com.example.thuchiapp.data.model.LoggedInUser;
+import com.example.thuchiapp.data.model.User;
 import com.example.thuchiapp.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Map;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,13 +38,11 @@ public class CaiDat extends Fragment  {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private Button Save_btn;
-    private Button LogOut_btn;
     private EditText FullName_et;
     private EditText Email_et;
     private EditText Password_et;
     private EditText Money_et;
-
+    private ProgressBar ProgressSetting_pb;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();;
     DatabaseReference databaseReference;
 
@@ -93,18 +90,19 @@ public class CaiDat extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cai_dat, container, false);
 
-        Save_btn = (Button) view.findViewById(R.id.saveSetting);
+        Button save_btn = (Button) view.findViewById(R.id.saveSetting);
+        Button logOut_btn = (Button) view.findViewById(R.id.LogOutSetting);
         Email_et = (EditText) view.findViewById(R.id.EmailSetting);
         Password_et = (EditText) view.findViewById(R.id.passwordSetting);
         Money_et = (EditText) view.findViewById(R.id.MoneySetting);
         FullName_et= (EditText) view.findViewById(R.id.FullNameSetting);
-        LogOut_btn = (Button) view.findViewById(R.id.LogOutSetting);
+        ProgressSetting_pb = (ProgressBar)view.findViewById(R.id.ProgressSetting);
 
-        Save_btn.setOnClickListener(new View.OnClickListener() {
+        save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoggedInUser loggedInUser = new LoggedInUser(Email_et.getText().toString(),Password_et.getText().toString(),Integer.valueOf(Money_et.getText().toString()),FullName_et.getText().toString());
-                databaseReference = firebaseDatabase.getReference("Users/" +firebaseAuth.getCurrentUser().getUid());
+                User loggedInUser = new User(Email_et.getText().toString(),Password_et.getText().toString(),Integer.parseInt(Money_et.getText().toString()),FullName_et.getText().toString());
+                databaseReference = firebaseDatabase.getReference("Users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
                 databaseReference.setValue(loggedInUser);
 
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -115,14 +113,16 @@ public class CaiDat extends Fragment  {
                 Toast.makeText(getActivity(), "Đã cập nhập thành công",Toast.LENGTH_SHORT).show();
         }
         });
-        LogOut_btn.setOnClickListener(new View.OnClickListener() {
+
+        logOut_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //firebaseAuth.updateCurrentUser().;
-                //Intent intent = new Intent(getActivity(), LoginActivity.class);
-                //startActivity(intent);
+                firebaseAuth.signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
+        ProgressSetting_pb.setVisibility(View.VISIBLE);
 
         firebaseAuth =FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -132,18 +132,21 @@ public class CaiDat extends Fragment  {
         databaseReference = firebaseDatabase.getReference("Users/"+user.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                LoggedInUser loggedInUser = new LoggedInUser();
-                loggedInUser = dataSnapshot.getValue(LoggedInUser.class);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user;
+                user = dataSnapshot.getValue(User.class);
 
-                FullName_et.setText(loggedInUser.getHoVaTen());
-                Money_et.setText(String.valueOf(loggedInUser.getMoneyNotification()));
+                assert user != null;
+                FullName_et.setText(user.getHoVaTen());
+                Money_et.setText(String.valueOf(user.getMoneyNotification()));
+                Password_et.setText(user.getPassword());
+                ProgressSetting_pb.setVisibility(View.GONE);
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getActivity(), error.toString(),Toast.LENGTH_SHORT).show();
-
+                ProgressSetting_pb.setVisibility(View.GONE);
             }
         });
         return view;

@@ -12,7 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
-import com.example.thuchiapp.data.model.LoggedInUser;
+import com.example.thuchiapp.data.model.ChiUser;
+import com.example.thuchiapp.data.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,10 +21,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class SignUp extends AppCompatActivity {
 
     Button SingUp_btn;
     EditText Email_et;
+    EditText FullName_et;
     EditText Password_et;
     EditText RePassword_et;
     ProgressBar Progress_SignUp;
@@ -39,19 +45,11 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         firebaseAuth =FirebaseAuth.getInstance();
 
-       /* if(firebaseAuth.getCurrentUser() != null)
-        {
-            Toast.makeText(getApplicationContext(),firebaseAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
-        }*/
-
-
-
         SingUp_btn = (Button)findViewById(R.id.StartSignUp);
         Email_et = (EditText)findViewById(R.id.EmailSignUp);
         Password_et = (EditText)findViewById(R.id.PasswordSignUp);
         RePassword_et = (EditText)findViewById(R.id.RePasswordSignUp);
+        FullName_et = (EditText)findViewById(R.id.FullNameSignUp);
         Progress_SignUp = (ProgressBar)findViewById(R.id.ProgressSignUp);
 
         SingUp_btn.setOnClickListener(new View.OnClickListener() {
@@ -82,10 +80,23 @@ public class SignUp extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             int money = 100000;
-                            String FullName = "Admin";
-                            LoggedInUser loggedInUser = new LoggedInUser(Email_et.getText().toString(),Password_et.getText().toString(),money,FullName);
-                            databaseReference = firebaseDatabase.getReference("Users/" +firebaseAuth.getCurrentUser().getUid());
-                            databaseReference.setValue(loggedInUser);
+                            String FullName = FullName_et.getText().toString();
+                            User user = new User(Email_et.getText().toString(),Password_et.getText().toString(),money,FullName);
+
+                            //khoi tao chi
+                            ChiUser chiUser = new ChiUser("Thức ăn", 20000,1,1,2021);
+                            ChiUser chiUser2 = new ChiUser("Nước", 10000,1,1,2021);
+                            ChiUser chiUser3 = new ChiUser("Xăng", 50000,1,1,2021);
+                            //tao list va them cac chi tiet chi vao list chi
+                            List<ChiUser> listChiUser = new ArrayList<>();
+                            listChiUser.add(chiUser);
+                            listChiUser.add(chiUser2);
+                            listChiUser.add(chiUser3);
+                            //them vao user
+                            user.setListChi(listChiUser);
+
+                            databaseReference = firebaseDatabase.getReference("Users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
+                            databaseReference.setValue(user);
 
                             Toast.makeText(getApplicationContext(),"Tạo tài khoản thành công",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignUp.this, MainActivity.class);
@@ -98,22 +109,6 @@ public class SignUp extends AppCompatActivity {
                         }
                     }
                 });
-                //Email_et.setText(databaseReference.toString());
-                //Toast.makeText(getApplicationContext(),databaseReference.getKey(),Toast.LENGTH_SHORT).show();
-                /*databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot ds : dataSnapshot.getChildren())
-                        {
-                            Email_et.setText(ds.getValue().toString());
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });*/
 
             }
         });
