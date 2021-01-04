@@ -59,7 +59,7 @@ public class SignUp extends AppCompatActivity {
                 String RePassword = RePassword_et.getText().toString();
                 if(Password.length() <6)
                 {
-                    Password_et.setError("Mật khẩu phải ít nhất 6 kí tự");
+                    Password_et.setError("Mật khẩu phải ít nhất 6 kí tự ");
                     return;
                 }
                 if(RePassword.length() <6)
