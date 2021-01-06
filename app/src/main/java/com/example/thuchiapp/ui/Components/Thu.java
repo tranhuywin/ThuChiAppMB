@@ -2,14 +2,33 @@ package com.example.thuchiapp.ui.Components;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.thuchiapp.R;
 import com.example.thuchiapp.ThemThuActivity;
+import com.example.thuchiapp.data.model.ChiUser;
+import com.example.thuchiapp.data.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +45,10 @@ public class Thu extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();;
+    DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
+    User userDTO;
     public Thu() {
         // Required empty public constructor
     }
@@ -64,6 +86,8 @@ public class Thu extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_thu, container, false);
         NewThu_btn = (Button) view.findViewById(R.id.newThu);
+        final ProgressBar progressBarThu = (ProgressBar)view.findViewById(R.id.ProgressThu);
+        final ListView listViewThu = (ListView)view.findViewById(R.id.ListViewThu);
         NewThu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +96,36 @@ public class Thu extends Fragment {
             }
         });
 
+        progressBarThu.setVisibility(View.VISIBLE);
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        assert user != null;
 
+        databaseReference = firebaseDatabase.getReference("Users/"+user.getUid());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userDTO = dataSnapshot.getValue(User.class);
+
+                progressBarThu.setVisibility(View.GONE);
+                // lay du lieu user
+                List<ChiUser> listChiUser = userDTO.getListChi();
+                ChiUser chiUser = new ChiUser("Xang", 50000,1,1,2021);
+                ChiUser chiUser1 = new ChiUser("An sang", 20000,1,1,2021);
+                listChiUser.add(chiUser);
+                listChiUser.add(chiUser1);
+
+                List<String> listData = new ArrayList<>();
+                listData.add(chiUser.getType() + chiUser.getDated() + chiUser.getMonth() + chiUser.getYear() + chiUser.getPrice());
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1 , listData);
+                listViewThu.setAdapter(arrayAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         return view;

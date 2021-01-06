@@ -5,11 +5,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.thuchiapp.R;
+import com.example.thuchiapp.data.model.ChiUser;
+
+import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,6 +78,7 @@ public class Chi extends Fragment {
                 Toast.makeText(getActivity(), Tien_et.getText().toString(),Toast.LENGTH_SHORT).show();
             }
         });
+
         return view;
     }
 }

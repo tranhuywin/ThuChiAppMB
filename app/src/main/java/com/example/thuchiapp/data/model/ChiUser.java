@@ -1,57 +1,56 @@
 package com.example.thuchiapp.data.model;
 
 public class ChiUser {
-    String Type;
-    int Price;
-    int Date, Month, Year;
+    String type;
+    int price;
+    int dated, month, year;
 
     public ChiUser(){}
     public ChiUser(String type, int price, int date, int month, int year) {
-        Type = type;
-        Price = price;
-        Date = date;
-        Month = month;
-        Year = year;
+        this.type = type;
+        this.price = price;
+        this.dated = date;
+        this.month = month;
+        this.year = year;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        this.type = type;
     }
 
     public int getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(int price) {
-        Price = price;
+        this.price = price;
     }
 
-    public int getDate() {
-        return Date;
+    public int getDated() {
+        return dated;
     }
 
-    public void setDate(int date) {
-        Date = date;
+    public void setDated(int dated) {
+        this.dated = dated;
     }
 
     public int getMonth() {
-        return Month;
+        return month;
     }
 
     public void setMonth(int month) {
-        Month = month;
+        this.month = month;
     }
 
     public int getYear() {
-        return Year;
+        return year;
     }
 
     public void setYear(int year) {
-        Year = year;
+        this.year = year;
     }
-
 }

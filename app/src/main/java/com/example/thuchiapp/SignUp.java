@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 import com.example.thuchiapp.data.model.ChiUser;
+import com.example.thuchiapp.data.model.ThuUser;
 import com.example.thuchiapp.data.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -82,18 +83,20 @@ public class SignUp extends AppCompatActivity {
                             int money = 100000;
                             String FullName = FullName_et.getText().toString();
                             User user = new User(Email_et.getText().toString(),Password_et.getText().toString(),money,FullName);
-
+                            //lay list chi hien tai
+                            List<ChiUser> listChiUser = new ArrayList<>();
+                            List<ThuUser> listThuUser = new ArrayList<>();
+                            //listChiUser = user.getListChi();
+                            //listThuUser = user.getListThu();
                             //khoi tao chi
                             ChiUser chiUser = new ChiUser("Thức ăn", 20000,1,1,2021);
-                            ChiUser chiUser2 = new ChiUser("Nước", 10000,1,1,2021);
-                            ChiUser chiUser3 = new ChiUser("Xăng", 50000,1,1,2021);
+                            ThuUser thuUser = new ThuUser("Thức ăn", 20000,1,1,2021);
                             //tao list va them cac chi tiet chi vao list chi
-                            List<ChiUser> listChiUser = new ArrayList<>();
                             listChiUser.add(chiUser);
-                            listChiUser.add(chiUser2);
-                            listChiUser.add(chiUser3);
+                            listThuUser.add(thuUser);
                             //them vao user
                             user.setListChi(listChiUser);
+                            user.setListThu(listThuUser);
 
                             databaseReference = firebaseDatabase.getReference("Users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
                             databaseReference.setValue(user);

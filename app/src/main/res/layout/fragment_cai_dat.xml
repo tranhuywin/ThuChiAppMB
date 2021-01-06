@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-medium"
         android:backgroundTint="#fa5246"
         android:drawableStart="@drawable/ic_save"
         android:text="@string/Save"
@@ -36,45 +37,110 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="96dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="72dp"
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
-        android:textColorLink="#fa5246" />
+        android:textColorLink="#fa5246"
+        android:importantForAutofill="no"
+        android:enabled="false"/>
 
-    <EditText
+    <Button
+        android:id="@+id/EmailEditSetting"
+        android:backgroundTint="#FFFFFF"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginRight="24dp"
+        android:layout_gravity="right"
+        android:drawableStart="@drawable/ic_baseline_edit_24"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="72dp"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/passwordSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <EditText
         android:id="@+id/passwordSetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="156dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="72dp"
         android:hint="@string/Password"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
-        android:textColorLink="#fa5246" />
+        android:textColorLink="#fa5246"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleDrawable="@drawable/ic_baseline_remove_red_eye_24"
+        android:enabled="false"/>-->
+
+
+    <Button
+        android:id="@+id/PasswordEditSetting"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="156dp"
+        android:layout_marginRight="24dp"
+        android:backgroundTint="#FFFFFF"
+        android:drawableStart="@drawable/ic_baseline_edit_24" />
+
     <EditText
         android:id="@+id/FullNameSetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="216dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="72dp"
         android:hint="Họ và tên"
         android:inputType="text"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true"
+        android:enabled="false"/>
 
+    <Button
+        android:id="@+id/FullNameEditSetting"
+        android:backgroundTint="#FFFFFF"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="216dp"
+        android:layout_marginRight="24dp"
+        android:drawableStart="@drawable/ic_baseline_edit_24"
+        android:layout_gravity="right"/>
     <EditText
-        android:layout_width="match_parent"
         android:id="@+id/MoneySetting"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="276dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="72dp"
+        android:drawableEnd="@drawable/ic_money"
         android:headerBackground="#fa5246"
         android:hint="@string/MoneyPerDay"
         android:inputType="number"
-        android:drawableEnd="@drawable/ic_money"/>
+        android:enabled="false"/>
+
+    <Button
+        android:id="@+id/MoneyEditSetting"
+        android:backgroundTint="#FFFFFF"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="276dp"
+        android:layout_marginRight="24dp"
+        android:drawableStart="@drawable/ic_baseline_edit_24"
+        android:layout_gravity="right"/>
 
     <Button
         android:id="@+id/LogOutSetting"

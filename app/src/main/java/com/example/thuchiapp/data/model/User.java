@@ -14,23 +14,23 @@ public class User {
     private String email;
     private int moneyNotification;
     private String hoVaTen;
-    private List<ThuUser> ListThu;
-    private List<ChiUser> ListChi;
+    private List<ThuUser> listThu;
+    private List<ChiUser> listChi;
 
     public List<ThuUser> getListThu() {
-        return ListThu;
+        return listThu;
     }
 
     public void setListThu(List<ThuUser> listThu) {
-        ListThu = listThu;
+        this.listThu = listThu;
     }
 
     public List<ChiUser> getListChi() {
-        return ListChi;
+        return listChi;
     }
 
     public void setListChi(List<ChiUser> listChi) {
-        ListChi = listChi;
+        this.listChi = listChi;
     }
 
     public int getMoneyNotification() {

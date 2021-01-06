@@ -1,12 +1,15 @@
 package com.example.thuchiapp.ui.Components;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.method.HideReturnsTransformationMethod;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -84,6 +87,7 @@ public class CaiDat extends Fragment  {
 
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,12 +96,60 @@ public class CaiDat extends Fragment  {
 
         Button save_btn = (Button) view.findViewById(R.id.saveSetting);
         Button logOut_btn = (Button) view.findViewById(R.id.LogOutSetting);
+        Button editEmail_btn = (Button)view.findViewById(R.id.EmailEditSetting);
+        Button editPassword_btn = (Button)view.findViewById(R.id.PasswordEditSetting);
+        Button editFullName_btn = (Button)view.findViewById(R.id.FullNameEditSetting);
+        Button editMoney_btn = (Button)view.findViewById(R.id.MoneyEditSetting);
+        //Button showPassword_btn = (Button)view.findViewById(R.id.ShowPasswordSetting);
         Email_et = (EditText) view.findViewById(R.id.EmailSetting);
         Password_et = (EditText) view.findViewById(R.id.passwordSetting);
         Money_et = (EditText) view.findViewById(R.id.MoneySetting);
         FullName_et= (EditText) view.findViewById(R.id.FullNameSetting);
         ProgressSetting_pb = (ProgressBar)view.findViewById(R.id.ProgressSetting);
 
+        editEmail_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Email_et.isEnabled())
+                    Email_et.setEnabled(false);
+                else
+                    Email_et.setEnabled(true);
+            }
+        });
+        editPassword_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Password_et.isEnabled())
+                    Password_et.setEnabled(false);
+                else
+                    Password_et.setEnabled(true);
+            }
+        });
+        editFullName_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(FullName_et.isEnabled())
+                    FullName_et.setEnabled(false);
+                else
+                    FullName_et.setEnabled(true);
+            }
+        });
+        editMoney_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Money_et.isEnabled())
+                    Money_et.setEnabled(false);
+                else
+                    Money_et.setEnabled(true);
+            }
+        });
+
+        /*showPassword_btn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });*/
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
