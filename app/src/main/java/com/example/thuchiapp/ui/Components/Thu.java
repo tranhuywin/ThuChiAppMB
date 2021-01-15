@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.example.thuchiapp.R;
 import com.example.thuchiapp.ThemThuActivity;
+import com.example.thuchiapp.ThuAdapter;
 import com.example.thuchiapp.data.model.ChiUser;
+import com.example.thuchiapp.data.model.ThuUser;
 import com.example.thuchiapp.data.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -109,16 +111,14 @@ public class Thu extends Fragment {
 
                 progressBarThu.setVisibility(View.GONE);
                 // lay du lieu user
-                List<ChiUser> listChiUser = userDTO.getListChi();
-                ChiUser chiUser = new ChiUser("Xang", 50000,1,1,2021);
-                ChiUser chiUser1 = new ChiUser("An sang", 20000,1,1,2021);
-                listChiUser.add(chiUser);
-                listChiUser.add(chiUser1);
+                List<ThuUser> thuUserList = userDTO.getListThu();
+                ThuUser thuUser = new ThuUser("Xang", 50000,1,1,2021);
+                ThuUser thuUser1 = new ThuUser("An sang", 20000,1,1,2021);
+                thuUserList.add(thuUser);
+                thuUserList.add(thuUser1);
 
-                List<String> listData = new ArrayList<>();
-                listData.add(chiUser.getType() + chiUser.getDated() + chiUser.getMonth() + chiUser.getYear() + chiUser.getPrice());
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1 , listData);
-                listViewThu.setAdapter(arrayAdapter);
+                ThuAdapter adapter = new ThuAdapter(getActivity(), R.layout.list_thu, thuUserList);
+                 listViewThu.setAdapter(adapter);
             }
 
             @Override

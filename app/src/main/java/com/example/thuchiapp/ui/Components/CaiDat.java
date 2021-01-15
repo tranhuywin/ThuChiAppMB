@@ -48,7 +48,7 @@ public class CaiDat extends Fragment  {
     private ProgressBar ProgressSetting_pb;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();;
     DatabaseReference databaseReference;
-
+    private User userSnapShot;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -144,16 +144,15 @@ public class CaiDat extends Fragment  {
             }
         });
 
-        /*showPassword_btn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return false;
-            }
-        });*/
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User loggedInUser = new User(Email_et.getText().toString(),Password_et.getText().toString(),Integer.parseInt(Money_et.getText().toString()),FullName_et.getText().toString());
+
+                User loggedInUser = userSnapShot;
+                loggedInUser.setEmail(Email_et.getText().toString());
+                loggedInUser.setHoVaTen(FullName_et.getText().toString());
+                loggedInUser.setPassword(Password_et.getText().toString());
+                loggedInUser.setMoneyNotification(Integer.parseInt(Money_et.getText().toString()));
                 databaseReference = firebaseDatabase.getReference("Users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
                 databaseReference.setValue(loggedInUser);
 
@@ -185,13 +184,13 @@ public class CaiDat extends Fragment  {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user;
-                user = dataSnapshot.getValue(User.class);
 
-                assert user != null;
-                FullName_et.setText(user.getHoVaTen());
-                Money_et.setText(String.valueOf(user.getMoneyNotification()));
-                Password_et.setText(user.getPassword());
+                userSnapShot = dataSnapshot.getValue(User.class);
+
+                assert userSnapShot != null;
+                FullName_et.setText(userSnapShot.getHoVaTen());
+                Money_et.setText(String.valueOf(userSnapShot.getMoneyNotification()));
+                Password_et.setText(userSnapShot.getPassword());
                 ProgressSetting_pb.setVisibility(View.GONE);
             }
 
