@@ -49,11 +49,13 @@ public class CaiDat extends Fragment  {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();;
     DatabaseReference databaseReference;
     private User userSnapShot;
+    FirebaseAuth firebaseAuth;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    FirebaseAuth firebaseAuth;
+
     public CaiDat() {
         // Required empty public constructor
     }
@@ -159,7 +161,7 @@ public class CaiDat extends Fragment  {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 user.updateEmail(Email_et.getText().toString());
                 user.updatePassword(Password_et.getText().toString());
-                FirebaseAuth.getInstance().updateCurrentUser(user);
+                //FirebaseAuth.getInstance().updateCurrentUser(user);
 
                 Toast.makeText(getActivity(), "Đã cập nhập thành công",Toast.LENGTH_SHORT).show();
         }

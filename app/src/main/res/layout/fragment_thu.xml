@@ -16,13 +16,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_marginStart="200dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
-        android:background="#009688"
-        android:drawableLeft="@drawable/ic_baseline_add_box_24"
-        android:text="New" />
-
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#fa5246"
+        android:drawableStart="@drawable/ic_baseline_add_box_24"
+        android:text="Thêm thu nhập"
+        android:layout_marginRight="16dp"
+        android:textSize="20sp" />
     <ListView
         android:id="@+id/ListViewThu"
         android:layout_width="wrap_content"
