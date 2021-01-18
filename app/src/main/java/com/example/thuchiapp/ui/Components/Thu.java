@@ -2,22 +2,20 @@ package com.example.thuchiapp.ui.Components;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.example.thuchiapp.R;
 import com.example.thuchiapp.ThemThuActivity;
 import com.example.thuchiapp.ThuAdapter;
-import com.example.thuchiapp.data.model.ChiUser;
 import com.example.thuchiapp.data.model.ThuUser;
 import com.example.thuchiapp.data.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,9 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.

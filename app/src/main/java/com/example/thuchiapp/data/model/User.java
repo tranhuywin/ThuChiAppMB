@@ -12,6 +12,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
@@ -98,7 +99,7 @@ public class User {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                userSnapShot = dataSnapshot.getValue(User.class);
+                userSnapShot = Objects.requireNonNull(dataSnapshot).getValue(User.class);
 
                 assert userSnapShot != null;
                 setEmail(userSnapShot.getEmail());

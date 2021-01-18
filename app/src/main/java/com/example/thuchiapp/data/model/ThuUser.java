@@ -5,6 +5,8 @@ public class ThuUser {
     int price;
     int dated, month, year;
 
+    String note;
+
     public String getType() {
         return type;
     }
@@ -45,6 +47,10 @@ public class ThuUser {
         this.year = year;
     }
 
+
+    public String getNote() { return note; }
+
+    public void setNote(String note) { this.note = note; }
 
 
     public ThuUser() {

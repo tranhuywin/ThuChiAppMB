@@ -1,9 +1,6 @@
 package com.example.thuchiapp.data.model;
 
 public class ChiUser {
-    String type;
-    int price;
-    int dated, month, year;
 
     public ChiUser(){}
     public ChiUser(String type, int price, int date, int month, int year) {
@@ -13,6 +10,12 @@ public class ChiUser {
         this.month = month;
         this.year = year;
     }
+
+    String type;
+    int price;
+    int dated, month, year;
+
+    String note;
 
     public String getType() {
         return type;
@@ -53,4 +56,11 @@ public class ChiUser {
     public void setYear(int year) {
         this.year = year;
     }
+
+
+    public String getNote() { return note; }
+
+    public void setNote(String note) { this.note = note; }
+
+
 }

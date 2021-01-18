@@ -35,7 +35,7 @@
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_them_thu">ThemThuActivity</string>
     <string name="title_activity_chi_tiet_thong_ke">ChiTietThongKe</string>
-    
+
     <string-array name="thoigian_thong_ke">
         <item>Tất cả</item>
         <item>Ngày</item>
@@ -52,4 +52,5 @@
         <item>Xăng</item>
         <item>Chi tiêu cá nhân</item>
     </string-array>
+    <string name="title_activity_them_chi">ThemChiActivity</string>
 </resources>

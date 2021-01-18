@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.thuchiapp.data.model.ThuUser;
+import com.example.thuchiapp.data.model.ChiUser;
 import com.example.thuchiapp.data.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 import java.util.List;
 
-public class ThemThuActivity extends AppCompatActivity {
+public class ThemChiActivity extends AppCompatActivity {
 
     private TextView mTextView;
     DatePicker datepicker_btn;
@@ -35,28 +36,31 @@ public class ThemThuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_them_thu);
+        setContentView(R.layout.activity_them_chi);
 
         mTextView = (TextView) findViewById(R.id.text);
-        Save_btn = (Button) findViewById(R.id.SaveThu);
-
+        Save_btn = (Button) findViewById(R.id.SaveChi);
+        final EditText loaithanhtoantc = (EditText) findViewById( R.id.LoaiThanhToanThemChi) ;
+        final String loaitt = loaithanhtoantc.getText().toString();
+        EditText sotienchi = (EditText) findViewById(R.id.SoTienChi);
+        final int sotc = Integer.valueOf(sotienchi.getText().toString());
         Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
-        datepicker_btn = (DatePicker) findViewById(R.id.ChonNgay_ThemThu);
+        datepicker_btn = (DatePicker) findViewById(R.id.ChonNgay_ThemChi);
         datepicker_btn.init(mYear,mMonth,mDay,null);
         //add user data to database
         Save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 User loggedInUser = userSnapShot;
-                List<ThuUser> thuUserList = userSnapShot.getListThu();
+                List<ChiUser> chiUserList = userSnapShot.getListChi();
                 //ToDo: them du lieu tu view vao
-                ThuUser thuUser = new ThuUser("xang", 1000, 1,1,2021);
-                thuUserList.add(thuUser);
+                ChiUser chiUser = new ChiUser(loaitt, sotc, datepicker_btn.getDayOfMonth(),datepicker_btn.getMonth(),datepicker_btn.getYear());
+                chiUserList.add(chiUser);
                 databaseReference.setValue(loggedInUser);
-                Toast.makeText(getApplicationContext(), "Thêm thu thành công",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Thêm chi thành công",Toast.LENGTH_SHORT).show();
             }
         });
         //get user data from firebase

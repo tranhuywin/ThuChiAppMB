@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".ThemThuActivity"
+    tools:context=".ThemChiActivity"
     tools:deviceIds="wear">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding">
+        android:padding="@dimen/inner_frame_layout_padding"
+      >
 
         <DatePicker
-            android:id="@+id/ChonNgay_ThemThu"
+            android:id="@+id/ChonNgay_ThemChi"
             android:layout_width="match_parent"
             android:layout_height="115dp"
             android:layout_marginStart="24dp"
@@ -36,12 +37,12 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:hint="@string/prompt_email"
-            android:text="@string/NewThu"
+            android:text="Chi tiêu mới"
             android:textColor="#fa5246"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/LoaiThanhToan"
+            android:id="@+id/LoaiThanhToanThemChi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -54,7 +55,7 @@
             android:textColorLink="#fa5246" />
 
         <EditText
-            android:id="@+id/CategoryThu"
+            android:id="@+id/CategoryChi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -65,7 +66,7 @@
             android:selectAllOnFocus="true"
             android:textColorLink="#fa5246" />
         <EditText
-            android:id="@+id/SoTienThu"
+            android:id="@+id/SoTienChi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -78,7 +79,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:id="@+id/GhichuThemThu"
+            android:id="@+id/GhichuThemChi"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="376dp"
@@ -89,7 +90,7 @@
             />
 
         <Button
-            android:id="@+id/SaveThu"
+            android:id="@+id/SaveChi"
             android:layout_width="138dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"

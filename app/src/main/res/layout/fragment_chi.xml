@@ -6,33 +6,31 @@
     tools:context=".ui.Components.Chi">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-    <EditText
-    android:id="@+id/tienChi"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="50dp"
-    android:layout_marginTop="96dp"
-    android:layout_marginEnd="50dp"
-    android:hint="Số tiền"
-    android:inputType="number"
-    android:selectAllOnFocus="true"
-    android:textColorLink="#fa5246" />
+
+    <ListView
+        android:id="@+id/ListViewChi"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_height="646dp" />
+
+    <ProgressBar
+        android:id="@+id/ProgressChi"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="invisible"
+        android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/SaveChi"
-        android:layout_width="138dp"
+        android:id="@+id/CreateChi"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="10dp"
         android:backgroundTint="#fa5246"
-        android:drawableStart="@drawable/ic_save"
+
         android:outlineSpotShadowColor="#FFFFFF"
-        android:text="@string/Save"
+        android:text="Tạo chi tiêu mới"
         android:textSize="20sp" />
 
 </FrameLayout>
