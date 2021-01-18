@@ -1,6 +1,8 @@
 package com.example.thuchiapp;
 
 import android.os.Bundle;
+
+import com.example.thuchiapp.data.model.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -21,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
+        if (User.getInstance().getEmail() == null) {
+            User.getInstance().LoadUser();
+        }
 
     }
 }

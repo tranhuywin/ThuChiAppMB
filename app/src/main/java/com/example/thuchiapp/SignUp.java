@@ -82,7 +82,7 @@ public class SignUp extends AppCompatActivity {
                         {
                             int money = 100000;
                             String FullName = FullName_et.getText().toString();
-                            User user = new User(Email_et.getText().toString(),Password_et.getText().toString(),money,FullName);
+                            User user = User.getInstance();
                             //lay list chi hien tai
                             List<ChiUser> listChiUser = new ArrayList<>();
                             List<ThuUser> listThuUser = new ArrayList<>();

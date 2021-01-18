@@ -4,8 +4,6 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-<!--    <uses-feature android:name="android.hardware.type.watch" />-->
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -25,8 +23,11 @@
             android:value="true" />
 
         <activity
+            android:name=".ChiTietThongKe"
+            android:label="@string/title_activity_chi_tiet_thong_ke" />
+        <activity
             android:name=".ThemThuActivity"
-            android:label="@string/title_activity_them_thu"></activity>
+            android:label="@string/title_activity_them_thu" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".MainActivity"

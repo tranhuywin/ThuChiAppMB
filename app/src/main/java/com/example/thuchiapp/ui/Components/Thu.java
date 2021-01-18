@@ -99,6 +99,19 @@ public class Thu extends Fragment {
         });
 
         progressBarThu.setVisibility(View.VISIBLE);
+/*        if (User.getInstance().getEmail() == null) {
+            User.getInstance().LoadUser();
+        }
+
+        // lay du lieu user
+        List<ThuUser> thuUserList =  User.getInstance().getListThu();
+        //ToDo: Chinh sua lai giao dien cho dep, hay sai` chuc nang nay nen lam` cho de~ nhin`. Them nut' xoa' nua, chi? can` xoa' khoi? list r setvalue lai. la` dc
+        ThuUser thuUser1 = new ThuUser("An sang", 20000,1,1,2021);
+        thuUserList.add(thuUser1);
+
+        ThuAdapter adapter = new ThuAdapter(getActivity(), R.layout.list_thu, thuUserList);
+        listViewThu.setAdapter(adapter);*/
+
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         assert user != null;
@@ -113,10 +126,8 @@ public class Thu extends Fragment {
                 // lay du lieu user
                 List<ThuUser> thuUserList = userDTO.getListThu();
                 //ToDo: Chinh sua lai giao dien cho dep, hay sai` chuc nang nay nen lam` cho de~ nhin`. Them nut' xoa' nua, chi? can` xoa' khoi? list r setvalue lai. la` dc
-/*                ThuUser thuUser = new ThuUser("Xang", 50000,1,1,2021);
                 ThuUser thuUser1 = new ThuUser("An sang", 20000,1,1,2021);
-                thuUserList.add(thuUser);
-                thuUserList.add(thuUser1);*/
+                thuUserList.add(thuUser1);
 
                 ThuAdapter adapter = new ThuAdapter(getActivity(), R.layout.list_thu, thuUserList);
                  listViewThu.setAdapter(adapter);

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.thuchiapp.MainActivity;
 import com.example.thuchiapp.R;
 import com.example.thuchiapp.SignUp;
+import com.example.thuchiapp.data.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
+                            User.getInstance().LoadUser();
                         }
                         else
                         {

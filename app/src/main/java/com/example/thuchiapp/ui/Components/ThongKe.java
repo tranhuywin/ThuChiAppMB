@@ -1,13 +1,20 @@
 package com.example.thuchiapp.ui.Components;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.example.thuchiapp.ChiTietThongKe;
 import com.example.thuchiapp.R;
+import com.example.thuchiapp.ThemThuActivity;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -32,6 +39,9 @@ public class ThongKe extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String ThoiGianThongke;
+    String LoaiThongke;
+    String SoTienMin, SoTienMax;
     BarChart thongKeBarChart;
     public ThongKe() {
         // Required empty public constructor
@@ -69,25 +79,28 @@ public class ThongKe extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_thong_ke, container, false);
-        thongKeBarChart = (BarChart) view.findViewById(R.id.BarChartThongKe);
 
-        ArrayList<BarEntry> visitors = new ArrayList<>();
-        visitors.add(new BarEntry(2017,320));
-        visitors.add(new BarEntry(2018,280));
-        visitors.add(new BarEntry(2019,420));
-        visitors.add(new BarEntry(2020,520));
-        BarDataSet barDataSet = new BarDataSet(visitors,"Visitors");
-        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
+        Spinner spinnerThoiGianThongke = (Spinner) view.findViewById(R.id.SpinnerThoiGianThongKe);
+        ThoiGianThongke = spinnerThoiGianThongke.getSelectedItem().toString();
+        Spinner spinnerloaiThongke = (Spinner) view.findViewById(R.id.SpinnerLoaiThongKe);
+        LoaiThongke = spinnerloaiThongke.getSelectedItem().toString();
+        EditText soTienMinet = (EditText) view.findViewById(R.id.SoTienMinThongKe);
+        SoTienMin = soTienMinet.getText().toString();
+        EditText soTienMaxet = (EditText) view.findViewById(R.id.SoTienMaxThongKe);
+        SoTienMax = soTienMaxet.getText().toString();
+        Button WatchBarChartThongKe_btn = (Button) view.findViewById(R.id.WatchBarChartThongke);
 
-        BarData barData = new BarData(barDataSet);
-
-        thongKeBarChart.setFitBars(true);
-        thongKeBarChart.setData(barData);
-        thongKeBarChart.getDescription().setText("bar char thong ke");
-        thongKeBarChart.animateY(2000);
-        
+        WatchBarChartThongKe_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChiTietThongKe.class);
+                intent.putExtra("TypeThoiGianThongke", ThoiGianThongke);
+                intent.putExtra("TypeLoaiThongke", LoaiThongke);
+                intent.putExtra("TypeSoTienMinThongke", SoTienMin);
+                intent.putExtra("TypeSoTienMaxThongke", SoTienMax);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 }

@@ -1,7 +1,14 @@
 package com.example.thuchiapp.data.model;
 
-import com.example.thuchiapp.ui.Components.Chi;
-import com.example.thuchiapp.ui.Components.Thu;
+import androidx.annotation.NonNull;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +17,22 @@ import java.util.List;
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
 public class User {
+    private static User instance;
 
+    private User() {
+    }
+    private User(String Email, String Password, int MoneyNotification, String HoVaTen) {
+        this.email = Email;
+        this.password = Password;
+        this.moneyNotification = MoneyNotification;
+        this.hoVaTen = HoVaTen;
+    }
+    public static User getInstance() {
+        if (instance == null) {
+            instance = new User();
+        }
+        return instance;
+    }
     private String password;
     private String email;
     private int moneyNotification;
@@ -18,6 +40,10 @@ public class User {
     private List<ThuUser> listThu = new ArrayList<>();
     private List<ChiUser> listChi = new ArrayList<>();
 
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();;
+    DatabaseReference databaseReference;
+    private User userSnapShot;
+    FirebaseAuth firebaseAuth;
     public List<ThuUser> getListThu() {
         return listThu;
     }
@@ -45,13 +71,6 @@ public class User {
         return email;
     }
     public String getPassword(){return password; }
-    public User(){};
-    public User(String Email, String Password, int MoneyNotification, String HoVaTen) {
-        this.email = Email;
-        this.password = Password;
-        this.moneyNotification = MoneyNotification;
-        this.hoVaTen = HoVaTen;
-    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -67,5 +86,32 @@ public class User {
 
     public void setHoVaTen(String hoVaTen) {
         this.hoVaTen = hoVaTen;
+    }
+
+    public void LoadUser(){
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        assert user != null;
+
+        databaseReference = firebaseDatabase.getReference("Users/"+user.getUid());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                userSnapShot = dataSnapshot.getValue(User.class);
+
+                assert userSnapShot != null;
+                setEmail(userSnapShot.getEmail());
+                setHoVaTen(userSnapShot.getHoVaTen());
+                setPassword(userSnapShot.getPassword());
+                setMoneyNotification(userSnapShot.getMoneyNotification());
+                setListChi(userSnapShot.getListChi());
+                setListThu(userSnapShot.getListThu());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }

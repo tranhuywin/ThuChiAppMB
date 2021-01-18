@@ -149,7 +149,6 @@ public class CaiDat extends Fragment  {
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 User loggedInUser = userSnapShot;
                 loggedInUser.setEmail(Email_et.getText().toString());
                 loggedInUser.setHoVaTen(FullName_et.getText().toString());
@@ -161,7 +160,6 @@ public class CaiDat extends Fragment  {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 user.updateEmail(Email_et.getText().toString());
                 user.updatePassword(Password_et.getText().toString());
-                //FirebaseAuth.getInstance().updateCurrentUser(user);
 
                 Toast.makeText(getActivity(), "Đã cập nhập thành công",Toast.LENGTH_SHORT).show();
         }
@@ -177,6 +175,16 @@ public class CaiDat extends Fragment  {
         });
         ProgressSetting_pb.setVisibility(View.VISIBLE);
 
+        if (User.getInstance().getEmail() == null) {
+            User.getInstance().LoadUser();
+        }
+/*        User userSnapShot = User.getInstance();
+        assert userSnapShot != null;
+        Email_et.setText(userSnapShot.getEmail());
+        FullName_et.setText(userSnapShot.getHoVaTen());
+        Money_et.setText(String.valueOf(userSnapShot.getMoneyNotification()));
+        Password_et.setText(userSnapShot.getPassword());
+        ProgressSetting_pb.setVisibility(View.GONE);*/
         firebaseAuth =FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         assert user != null;
@@ -188,7 +196,6 @@ public class CaiDat extends Fragment  {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 userSnapShot = dataSnapshot.getValue(User.class);
-
                 assert userSnapShot != null;
                 FullName_et.setText(userSnapShot.getHoVaTen());
                 Money_et.setText(String.valueOf(userSnapShot.getMoneyNotification()));

@@ -34,4 +34,22 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_them_thu">ThemThuActivity</string>
+    <string name="title_activity_chi_tiet_thong_ke">ChiTietThongKe</string>
+    
+    <string-array name="thoigian_thong_ke">
+        <item>Tất cả</item>
+        <item>Ngày</item>
+        <item>Tuần</item>
+        <item>Tháng</item>
+    </string-array>
+    <string-array name="loai_thong_ke">
+        <item>Tất cả</item>
+        <item>Ăn sáng</item>
+        <item>Ăn trưa</item>
+        <item>Ăn tối</item>
+        <item>Thức ăn</item>
+        <item>Ăn vặt</item>
+        <item>Xăng</item>
+        <item>Chi tiêu cá nhân</item>
+    </string-array>
 </resources>

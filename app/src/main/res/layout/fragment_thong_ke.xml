@@ -6,9 +6,81 @@
     tools:context=".ui.Components.ThongKe">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/BarChartThongKe"
+
+
+    <Button
+        android:id="@+id/WatchBarChartThongke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#fa5246"
+        android:text="Xem thống kê"
+        android:layout_marginRight="16dp"
+        android:textSize="20sp" />
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="36dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="16dp"
+        android:text="Chọn kiểu thời gian: " />
+
+    <Spinner
+        android:id="@+id/SpinnerThoiGianThongKe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginRight="48dp"
+        android:entries="@array/thoigian_thong_ke" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="154dp"
+        android:layout_marginStart="16dp"
+
+        android:layout_marginRight="24dp"
+        android:text="Chọn loại: " />
+    <Spinner
+        android:id="@+id/SpinnerLoaiThongKe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/loai_thong_ke"
+        android:layout_marginTop="153dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginRight="48dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="212dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="24dp"
+        android:text="Số tiền: " />
+
+    <EditText
+        android:layout_width="100dp"
+        android:id="@+id/SoTienMinThongKe"
+        android:hint="Min"
+        android:textSize="16dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="24dp"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="100dp"
+        android:id="@+id/SoTienMaxThongKe"
+        android:hint="Max"
+        android:textSize="16dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="24dp"
+        android:inputType="number"/>
 
 </FrameLayout>
