@@ -80,24 +80,21 @@ public class ThongKe extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_thong_ke, container, false);
 
-        Spinner spinnerThoiGianThongke = (Spinner) view.findViewById(R.id.SpinnerThoiGianThongKe);
-        ThoiGianThongke = spinnerThoiGianThongke.getSelectedItem().toString();
+        final Spinner spinnerThoiGianThongke = (Spinner) view.findViewById(R.id.SpinnerThoiGianThongKe);
         Spinner spinnerloaiThongke = (Spinner) view.findViewById(R.id.SpinnerLoaiThongKe);
         LoaiThongke = spinnerloaiThongke.getSelectedItem().toString();
-        EditText soTienMinet = (EditText) view.findViewById(R.id.SoTienMinThongKe);
-        SoTienMin = soTienMinet.getText().toString();
-        EditText soTienMaxet = (EditText) view.findViewById(R.id.SoTienMaxThongKe);
-        SoTienMax = soTienMaxet.getText().toString();
+        final EditText soTienMinet = (EditText) view.findViewById(R.id.SoTienMinThongKe);
+        final EditText soTienMaxet = (EditText) view.findViewById(R.id.SoTienMaxThongKe);
         Button WatchBarChartThongKe_btn = (Button) view.findViewById(R.id.WatchBarChartThongke);
 
         WatchBarChartThongKe_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ChiTietThongKe.class);
-                intent.putExtra("TypeThoiGianThongke", ThoiGianThongke);
+                intent.putExtra("TypeThoiGianThongke", spinnerThoiGianThongke.getSelectedItem().toString());
                 intent.putExtra("TypeLoaiThongke", LoaiThongke);
-                intent.putExtra("TypeSoTienMinThongke", SoTienMin);
-                intent.putExtra("TypeSoTienMaxThongke", SoTienMax);
+                intent.putExtra("TypeSoTienMinThongke", soTienMinet.getText().toString());
+                intent.putExtra("TypeSoTienMaxThongke", soTienMaxet.getText().toString());
                 startActivity(intent);
             }
         });
