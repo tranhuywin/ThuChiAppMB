@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +41,11 @@ public class ThemThuActivity extends AppCompatActivity {
 
         mTextView = (TextView) findViewById(R.id.text);
         Save_btn = (Button) findViewById(R.id.SaveThu);
-
+        final Spinner loaithanhtoantc = (Spinner) findViewById( R.id.SpinnerLoaiThu) ;
+        final String loaitt = loaithanhtoantc.getSelectedItem().toString();
+        final EditText sotienchi = (EditText) findViewById(R.id.SoTienThu);
+        //final int sotc = Integer.valueOf(sotienchi.getText().toString());
+        final EditText note = (EditText) findViewById(R.id.GhichuThemThu);
         Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
@@ -53,7 +59,7 @@ public class ThemThuActivity extends AppCompatActivity {
                 User loggedInUser = userSnapShot;
                 List<ThuUser> thuUserList = userSnapShot.getListThu();
                 //ToDo: them du lieu tu view vao
-                ThuUser thuUser = new ThuUser("xang", 1000, 1,1,2021);
+                ThuUser thuUser = new ThuUser(loaithanhtoantc.getSelectedItem().toString(), Integer.parseInt(sotienchi.getText().toString()), datepicker_btn.getDayOfMonth(),datepicker_btn.getMonth(),datepicker_btn.getYear(),note.getText().toString());;
                 thuUserList.add(thuUser);
                 databaseReference.setValue(loggedInUser);
                 Toast.makeText(getApplicationContext(), "Thêm thu thành công",Toast.LENGTH_SHORT).show();

@@ -52,6 +52,8 @@ public class ChiAdapter extends BaseAdapter {
         txtSoTien.setText(String.valueOf(chiUserList.get(position).getPrice()));
         TextView txtloai = (TextView) convertView.findViewById(R.id.textViewChi7);
         txtloai.setText(String.valueOf(chiUserList.get(position).getType()));
+        TextView txtghichu = (TextView) convertView.findViewById(R.id.textViewChi8);
+        txtghichu.setText(String.valueOf(chiUserList.get(position).getNote()));
         return convertView;
     }
 }

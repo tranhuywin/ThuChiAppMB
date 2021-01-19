@@ -3,12 +3,13 @@ package com.example.thuchiapp.data.model;
 public class ChiUser {
 
     public ChiUser(){}
-    public ChiUser(String type, int price, int date, int month, int year) {
+    public ChiUser(String type, int price, int date, int month, int year, String note) {
         this.type = type;
         this.price = price;
         this.dated = date;
         this.month = month;
         this.year = year;
+        this.note = note;
     }
 
     String type;

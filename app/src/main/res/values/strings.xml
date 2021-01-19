@@ -52,5 +52,20 @@
         <item>Xăng</item>
         <item>Chi tiêu cá nhân</item>
     </string-array>
+    <string-array name="loai_chi">
+        <item>Ăn sáng</item>
+        <item>Ăn trưa</item>
+        <item>Ăn tối</item>
+        <item>Thức ăn</item>
+        <item>Ăn vặt</item>
+        <item>Xăng</item>
+        <item>Chi tiêu cá nhân</item>
+    </string-array>
+    <string-array name="loai_thu">
+
+        <item>Tiền lương</item>
+        <item>Thu nhập thêm</item>
+        <item>Khác</item>
+    </string-array>
     <string name="title_activity_them_chi">ThemChiActivity</string>
 </resources>

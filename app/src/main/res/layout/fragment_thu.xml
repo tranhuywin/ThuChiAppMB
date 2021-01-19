@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Components.Thu">
+    tools:context=".ui.Components.Thu"
+    android:background="#CC9D74">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -18,7 +19,7 @@
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif-medium"
-        android:backgroundTint="#fa5246"
+        android:backgroundTint="#D66151"
         android:drawableStart="@drawable/ic_baseline_add_box_24"
         android:text="Thêm thu nhập"
         android:layout_marginRight="16dp"
@@ -27,7 +28,13 @@
         android:id="@+id/ListViewThu"
         android:layout_width="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_height="646dp" />
+        android:layout_height="646dp"
+        android:scrollX="0px"
+        android:scrollY="0px"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarSize="20dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"/>
 
     <ProgressBar
         android:id="@+id/ProgressThu"

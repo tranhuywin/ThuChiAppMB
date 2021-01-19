@@ -89,11 +89,11 @@ public class SignUp extends AppCompatActivity {
                             //listChiUser = user.getListChi();
                             //listThuUser = user.getListThu();
                             //khoi tao chi
-                            ChiUser chiUser = new ChiUser("Thức ăn", 20000,1,1,2021);
-                            ThuUser thuUser = new ThuUser("Thức ăn", 20000,1,1,2021);
+                           // ChiUser chiUser = new ChiUser("Thức ăn", 20000,1,1,2021);
+                           // ThuUser thuUser = new ThuUser("Thức ăn", 20000,1,1,2021);
                             //tao list va them cac chi tiet chi vao list chi
-                            listChiUser.add(chiUser);
-                            listThuUser.add(thuUser);
+                           // listChiUser.add(chiUser);
+                            //listThuUser.add(thuUser);
                             //them vao user
                             user.setListChi(listChiUser);
                             user.setListThu(listThuUser);

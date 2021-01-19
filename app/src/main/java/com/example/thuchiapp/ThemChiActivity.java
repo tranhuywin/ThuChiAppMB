@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,10 +41,12 @@ public class ThemChiActivity extends AppCompatActivity {
 
         mTextView = (TextView) findViewById(R.id.text);
         Save_btn = (Button) findViewById(R.id.SaveChi);
-        final EditText loaithanhtoantc = (EditText) findViewById( R.id.LoaiThanhToanThemChi) ;
-        final String loaitt = loaithanhtoantc.getText().toString();
-        EditText sotienchi = (EditText) findViewById(R.id.SoTienChi);
-        final int sotc = Integer.valueOf(sotienchi.getText().toString());
+        final Spinner loaithanhtoantc = (Spinner) findViewById( R.id.SpinnerLoaiChi) ;
+        final String loaitt = loaithanhtoantc.getSelectedItem().toString();
+        final EditText sotienchi = (EditText) findViewById(R.id.SoTienChi);
+        //final int sotc = Integer.valueOf(sotienchi.getText().toString());
+        final EditText note = (EditText) findViewById(R.id.GhichuThemChi);
+
         Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
@@ -57,7 +60,9 @@ public class ThemChiActivity extends AppCompatActivity {
                 User loggedInUser = userSnapShot;
                 List<ChiUser> chiUserList = userSnapShot.getListChi();
                 //ToDo: them du lieu tu view vao
-                ChiUser chiUser = new ChiUser(loaitt, sotc, datepicker_btn.getDayOfMonth(),datepicker_btn.getMonth(),datepicker_btn.getYear());
+
+                ChiUser chiUser = new ChiUser(loaithanhtoantc.getSelectedItem().toString(), Integer.parseInt(sotienchi.getText().toString()), datepicker_btn.getDayOfMonth(),datepicker_btn.getMonth(),datepicker_btn.getYear(), note.getText().toString());
+                System.out.println(chiUser);
                 chiUserList.add(chiUser);
                 databaseReference.setValue(loggedInUser);
                 Toast.makeText(getApplicationContext(), "Thêm chi thành công",Toast.LENGTH_SHORT).show();

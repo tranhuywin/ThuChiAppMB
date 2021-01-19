@@ -3,16 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Components.Chi">
+    tools:context=".ui.Components.Chi"
+    android:background="#C89B73">
 
     <!-- TODO: Update blank fragment layout -->
 
 
     <ListView
         android:id="@+id/ListViewChi"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="646dp"
         android:layout_marginTop="16dp"
-        android:layout_height="646dp" />
+        android:scrollX="0px"
+        android:scrollY="0px"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarSize="20dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical" />
 
     <ProgressBar
         android:id="@+id/ProgressChi"
@@ -27,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#fa5246"
+        android:backgroundTint="#D66151"
 
         android:outlineSpotShadowColor="#FFFFFF"
         android:text="Tạo chi tiêu mới"

@@ -83,7 +83,7 @@ public class Chi extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_thu, container, false);
+        View view = inflater.inflate(R.layout.fragment_chi, container, false);
         NewChi_btn = (Button) view.findViewById(R.id.CreateChi);
         final ProgressBar progressBarChi = (ProgressBar)view.findViewById(R.id.ProgressChi);
         final ListView listViewChi = (ListView)view.findViewById(R.id.ListViewChi);
@@ -123,8 +123,8 @@ public class Chi extends Fragment {
                 // lay du lieu user
                 List<ChiUser> chiUserList = userDTO.getListChi();
                 //ToDo: Chinh sua lai giao dien cho dep, hay sai` chuc nang nay nen lam` cho de~ nhin`. Them nut' xoa' nua, chi? can` xoa' khoi? list r setvalue lai. la` dc
-                ChiUser chiUser1 = new ChiUser("An sang", 20000,1,1,2021);
-                chiUserList.add(chiUser1);
+                //ChiUser chiUser1 = new ChiUser("An sang", 20000,1,1,2021);
+                //chiUserList.add(chiUser1);
 
                 ChiAdapter adapter = new ChiAdapter(getActivity(), R.layout.list_chi, chiUserList);
                 listViewChi.setAdapter(adapter);
