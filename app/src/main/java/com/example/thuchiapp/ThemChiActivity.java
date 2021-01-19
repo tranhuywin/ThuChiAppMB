@@ -61,7 +61,7 @@ public class ThemChiActivity extends AppCompatActivity {
                 List<ChiUser> chiUserList = userSnapShot.getListChi();
                 //ToDo: them du lieu tu view vao
 
-                ChiUser chiUser = new ChiUser(loaithanhtoantc.getSelectedItem().toString(), Integer.parseInt(sotienchi.getText().toString()), datepicker_btn.getDayOfMonth(),datepicker_btn.getMonth(),datepicker_btn.getYear(), note.getText().toString());
+                ChiUser chiUser = new ChiUser(loaithanhtoantc.getSelectedItem().toString(), Integer.parseInt(sotienchi.getText().toString()), datepicker_btn.getDayOfMonth(),datepicker_btn.getMonth()+1,datepicker_btn.getYear(), note.getText().toString());
                 System.out.println(chiUser);
                 chiUserList.add(chiUser);
                 databaseReference.setValue(loggedInUser);

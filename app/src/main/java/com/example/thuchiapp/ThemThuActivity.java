@@ -59,7 +59,7 @@ public class ThemThuActivity extends AppCompatActivity {
                 User loggedInUser = userSnapShot;
                 List<ThuUser> thuUserList = userSnapShot.getListThu();
                 //ToDo: them du lieu tu view vao
-                ThuUser thuUser = new ThuUser(loaithanhtoantc.getSelectedItem().toString(), Integer.parseInt(sotienchi.getText().toString()), datepicker_btn.getDayOfMonth(),datepicker_btn.getMonth(),datepicker_btn.getYear(),note.getText().toString());;
+                ThuUser thuUser = new ThuUser(loaithanhtoantc.getSelectedItem().toString(), Integer.parseInt(sotienchi.getText().toString()), datepicker_btn.getDayOfMonth(),datepicker_btn.getMonth()+1,datepicker_btn.getYear(),note.getText().toString());;
                 thuUserList.add(thuUser);
                 databaseReference.setValue(loggedInUser);
                 Toast.makeText(getApplicationContext(), "Thêm thu thành công",Toast.LENGTH_SHORT).show();

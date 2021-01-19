@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Components.Chi"
-    android:background="#C89B73">
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -32,10 +32,10 @@
         android:id="@+id/CreateChi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="bottom|right"
         android:layout_marginBottom="10dp"
         android:backgroundTint="#D66151"
-
+        android:layout_marginRight="16dp"
         android:outlineSpotShadowColor="#FFFFFF"
         android:text="Tạo chi tiêu mới"
         android:textSize="20sp" />
