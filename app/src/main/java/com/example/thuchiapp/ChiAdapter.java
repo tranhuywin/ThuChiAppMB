@@ -49,7 +49,7 @@ public class ChiAdapter extends BaseAdapter {
         TextView txtNam = (TextView) convertView.findViewById(R.id.textViewChi4);
         txtNam.setText(String.valueOf(chiUserList.get(position).getYear()));
         TextView txtSoTien = (TextView) convertView.findViewById(R.id.textViewChi5);
-        txtSoTien.setText(String.valueOf(chiUserList.get(position).getPrice()));
+        txtSoTien.setText(String.valueOf(chiUserList.get(position).getPrice()) + " VND");
         TextView txtloai = (TextView) convertView.findViewById(R.id.textViewChi7);
         txtloai.setText(String.valueOf(chiUserList.get(position).getType()));
         TextView txtghichu = (TextView) convertView.findViewById(R.id.textViewChi8);

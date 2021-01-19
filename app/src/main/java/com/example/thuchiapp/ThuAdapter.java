@@ -48,7 +48,7 @@ public class ThuAdapter extends BaseAdapter {
         TextView txtNam = (TextView) convertView.findViewById(R.id.textView4);
         txtNam.setText(String.valueOf(thuUserList.get(position).getYear()));
         TextView txtSoTien = (TextView) convertView.findViewById(R.id.textView5);
-        txtSoTien.setText(String.valueOf(thuUserList.get(position).getPrice()));
+        txtSoTien.setText(String.valueOf(thuUserList.get(position).getPrice()) + " VND");
         TextView txtloai = (TextView) convertView.findViewById(R.id.textView7);
         txtloai.setText(String.valueOf(thuUserList.get(position).getType()));
         TextView txtghichu = (TextView) convertView.findViewById(R.id.textView8);

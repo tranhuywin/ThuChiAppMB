@@ -19,7 +19,7 @@
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif-medium"
-        android:backgroundTint="#D66151"
+        android:backgroundTint="#fa5246"
         android:drawableStart="@drawable/ic_baseline_add_box_24"
         android:text="Thêm thu nhập"
         android:layout_marginRight="16dp"

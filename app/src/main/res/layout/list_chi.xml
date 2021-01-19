@@ -23,6 +23,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
         android:text="Ngày:"
+        android:textColor="#fa5246"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +57,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="32dp"
         android:text="Số tiền:"
+        android:textColor="#fa5246"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textViewChi7"
         app:layout_constraintTop_toTopOf="parent" />
@@ -85,6 +87,7 @@
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/textviewLoaiChi"
+        android:textColor="#fa5246"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -100,6 +103,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="32dp"
         android:text="Ghi chú:"
+        android:textColor="#fa5246"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textViewChi5"
         app:layout_constraintTop_toTopOf="parent" />

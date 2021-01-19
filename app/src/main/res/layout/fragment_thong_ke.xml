@@ -45,20 +45,34 @@
         android:layout_marginStart="16dp"
         android:text="Chọn thời gian: " />
 
-    <Spinner
-        android:id="@+id/SpinnerThangThongKe"
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginTop="146dp"
+        android:layout_marginRight="24dp"
         android:layout_marginStart="270dp"
-        android:layout_marginTop="145dp"
-        android:layout_marginRight="48dp"
-        android:entries="@array/nam" />
+        android:text="Năm: " />
 
     <Spinner
         android:id="@+id/SpinnerNamThongKe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginRight="48dp"
+        android:entries="@array/nam" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginTop="146dp"
+        android:layout_marginRight="24dp"
         android:layout_marginStart="140dp"
+        android:text="Tháng: " />
+    <Spinner
+        android:id="@+id/SpinnerThangThongKe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="190dp"
         android:layout_marginTop="145dp"
         android:layout_marginRight="48dp"
         android:entries="@array/thang" />

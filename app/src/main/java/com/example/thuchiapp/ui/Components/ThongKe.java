@@ -81,6 +81,8 @@ public class ThongKe extends Fragment {
         View view = inflater.inflate(R.layout.fragment_thong_ke, container, false);
 
         final Spinner spinnerThoiGianThongke = (Spinner) view.findViewById(R.id.SpinnerThoiGianThongKe);
+        final Spinner spinnerThangThongke = (Spinner) view.findViewById(R.id.SpinnerThangThongKe);
+        final Spinner spinnerNamThongke = (Spinner) view.findViewById(R.id.SpinnerNamThongKe);
         final Spinner spinnerloaiThongke = (Spinner) view.findViewById(R.id.SpinnerLoaiThongKe);
         final EditText soTienMinet = (EditText) view.findViewById(R.id.SoTienMinThongKe);
         final EditText soTienMaxet = (EditText) view.findViewById(R.id.SoTienMaxThongKe);
@@ -91,6 +93,8 @@ public class ThongKe extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ChiTietThongKe.class);
                 intent.putExtra("TypeThoiGianThongke", spinnerThoiGianThongke.getSelectedItem().toString());
+                intent.putExtra("ThangThongke", spinnerThangThongke.getSelectedItem().toString());
+                intent.putExtra("NamThongke", spinnerNamThongke.getSelectedItem().toString());
                 intent.putExtra("TypeLoaiThongke", spinnerloaiThongke.getSelectedItem().toString());
                 intent.putExtra("TypeSoTienMinThongke", soTienMinet.getText().toString());
                 intent.putExtra("TypeSoTienMaxThongke", soTienMaxet.getText().toString());
