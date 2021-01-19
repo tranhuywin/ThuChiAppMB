@@ -1,10 +1,13 @@
 package com.example.thuchiapp.ui.Components;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -27,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +47,8 @@ public class Thu extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    List<ThuUser> thuUserList;
+    ThuAdapter adapter;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
@@ -94,19 +100,32 @@ public class Thu extends Fragment {
             }
         });
 
+        listViewThu.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog ad = new AlertDialog.Builder(getActivity())
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                thuUserList.remove(position);
+                                adapter.notifyDataSetChanged();
+
+                                userDTO.setListThu(thuUserList);
+                                databaseReference = firebaseDatabase.getReference("Users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
+                                databaseReference.setValue(userDTO);
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                            }
+                        })
+                        .setNegativeButton("Canncel", null)
+                        .create();
+                ad.setCancelable(false);
+                ad.setTitle("Xóa thông tin chi");
+                ad.setMessage("Bạn có muốn xóa");
+                ad.show();
+                return false;
+            }
+        });
         progressBarThu.setVisibility(View.VISIBLE);
-/*        if (User.getInstance().getEmail() == null) {
-            User.getInstance().LoadUser();
-        }
-
-        // lay du lieu user
-        List<ThuUser> thuUserList =  User.getInstance().getListThu();
-        //ToDo: Chinh sua lai giao dien cho dep, hay sai` chuc nang nay nen lam` cho de~ nhin`. Them nut' xoa' nua, chi? can` xoa' khoi? list r setvalue lai. la` dc
-        ThuUser thuUser1 = new ThuUser("An sang", 20000,1,1,2021);
-        thuUserList.add(thuUser1);
-
-        ThuAdapter adapter = new ThuAdapter(getActivity(), R.layout.list_thu, thuUserList);
-        listViewThu.setAdapter(adapter);*/
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -120,12 +139,9 @@ public class Thu extends Fragment {
 
                 progressBarThu.setVisibility(View.GONE);
                 // lay du lieu user
-                List<ThuUser> thuUserList = userDTO.getListThu();
-                //ToDo: Chinh sua lai giao dien cho dep, hay sai` chuc nang nay nen lam` cho de~ nhin`. Them nut' xoa' nua, chi? can` xoa' khoi? list r setvalue lai. la` dc
-                //ThuUser thuUser1 = new ThuUser("An sang", 20000,1,1,2021);
-                //thuUserList.add(thuUser1);
+                thuUserList = userDTO.getListThu();
 
-                ThuAdapter adapter = new ThuAdapter(getActivity(), R.layout.list_thu, thuUserList);
+                adapter = new ThuAdapter(getActivity(), R.layout.list_thu, thuUserList);
                  listViewThu.setAdapter(adapter);
             }
 

@@ -1,10 +1,13 @@
 package com.example.thuchiapp.ui.Components;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -28,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,6 +48,8 @@ public class Chi extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    ChiAdapter adapter;
+    List<ChiUser> chiUserList;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
@@ -87,6 +93,7 @@ public class Chi extends Fragment {
         NewChi_btn = (Button) view.findViewById(R.id.CreateChi);
         final ProgressBar progressBarChi = (ProgressBar)view.findViewById(R.id.ProgressChi);
         final ListView listViewChi = (ListView)view.findViewById(R.id.ListViewChi);
+
         NewChi_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,20 +101,33 @@ public class Chi extends Fragment {
                 startActivity(intent);
             }
         });
+        listViewChi.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog ad = new AlertDialog.Builder(getActivity())
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                System.out.println("xoa");
+                                chiUserList.remove(position);
+                                adapter.notifyDataSetChanged();
 
+                                userDTO.setListChi(chiUserList);
+                                databaseReference = firebaseDatabase.getReference("Users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
+                                databaseReference.setValue(userDTO);
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                            }
+                        })
+                        .setNegativeButton("Canncel", null)
+                        .create();
+                ad.setCancelable(false);
+                ad.setTitle("Xóa thông tin chi");
+                ad.setMessage("Bạn có muốn xóa");
+                ad.show();
+                return false;
+            }
+        });
         progressBarChi.setVisibility(View.VISIBLE);
-/*        if (User.getInstance().getEmail() == null) {
-            User.getInstance().LoadUser();
-        }
-
-        // lay du lieu user
-        List<ThuUser> thuUserList =  User.getInstance().getListThu();
-        //ToDo: Chinh sua lai giao dien cho dep, hay sai` chuc nang nay nen lam` cho de~ nhin`. Them nut' xoa' nua, chi? can` xoa' khoi? list r setvalue lai. la` dc
-        ThuUser thuUser1 = new ThuUser("An sang", 20000,1,1,2021);
-        thuUserList.add(thuUser1);
-
-        ThuAdapter adapter = new ThuAdapter(getActivity(), R.layout.list_thu, thuUserList);
-        listViewThu.setAdapter(adapter);*/
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -118,15 +138,10 @@ public class Chi extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userDTO = dataSnapshot.getValue(User.class);
-
                 progressBarChi.setVisibility(View.GONE);
                 // lay du lieu user
-                List<ChiUser> chiUserList = userDTO.getListChi();
-                //ToDo: Chinh sua lai giao dien cho dep, hay sai` chuc nang nay nen lam` cho de~ nhin`. Them nut' xoa' nua, chi? can` xoa' khoi? list r setvalue lai. la` dc
-                //ChiUser chiUser1 = new ChiUser("An sang", 20000,1,1,2021);
-                //chiUserList.add(chiUser1);
-
-                ChiAdapter adapter = new ChiAdapter(getActivity(), R.layout.list_chi, chiUserList);
+                chiUserList = userDTO.getListChi();
+                adapter = new ChiAdapter(getActivity(), R.layout.list_chi, chiUserList);
                 listViewChi.setAdapter(adapter);
             }
 
@@ -138,5 +153,8 @@ public class Chi extends Fragment {
 
 
         return view;
+    }
+    void DeleteItem(int position){
+
     }
 }
