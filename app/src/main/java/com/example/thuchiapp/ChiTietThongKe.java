@@ -13,9 +13,7 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,7 +39,7 @@ public class ChiTietThongKe extends AppCompatActivity {
         else if(TypeThoiGianThongke.equals("Tháng"))
             ThongKeThang(2021, TypeLoaiThongke);
         else if(TypeThoiGianThongke.equals("Năm"))
-            ThongKeNam(2020,2025, TypeLoaiThongke);
+            ThongKeNam(2020,2030, TypeLoaiThongke);
 
 
     }
@@ -77,28 +75,63 @@ public class ChiTietThongKe extends AppCompatActivity {
     }
     private void ThongKeNgay(int Thang, String TypeLoaiThongke){
         User UserBarData = User.getInstance();
-        List<ThuUser> thuUserList = UserBarData.getListThu();
-        List<ChiUser> chiUserList = UserBarData.getListChi();
-        int thuUserListSize = thuUserList.size();
+        List<ThuUser> thuUserList = null;
+        List<ChiUser> chiUserList = null;
+        int UserListSize = 0;
+        if(TypeLoaiThongke.equals("Thu"))
+        {
+            thuUserList = UserBarData.getListThu();
+            UserListSize = thuUserList.size();
+        }
+        else
+        {
+            chiUserList = UserBarData.getListChi();
+            UserListSize = chiUserList.size();
+        }
 
         ArrayList<BarEntry> visitors = new ArrayList<>();
-        for(int i = 0; i < 31; i++){
-            int TongTien = 0;
-            for(int j = 0 ; j < thuUserListSize; j++){
-                if(thuUserList.get(j).getDated() == i && thuUserList.get(j).getMonth() == Thang && thuUserList.get(i).getType().equals(TypeLoaiThongke))
-                {
-                    if(TypeSoTienMinThongke != "" && TypeSoTienMaxThongke != "") {
-                        if (thuUserList.get(j).getPrice() >= Integer.parseInt(TypeSoTienMinThongke) && thuUserList.get(j).getPrice() <= Integer.parseInt(TypeSoTienMaxThongke))
+
+        if(TypeLoaiThongke.equals("Thu"))
+        {
+            for(int i = 0; i < 31; i++){
+                int TongTien = 0;
+                for(int j = 0 ; j < UserListSize; j++){
+                    if(thuUserList.get(j).getDated() == i && thuUserList.get(j).getMonth() == Thang)
+                    {
+                        if(!TypeSoTienMinThongke.equals("") && !TypeSoTienMaxThongke.equals("")) {
+                            if (thuUserList.get(j).getPrice() >= Integer.parseInt(TypeSoTienMinThongke) && thuUserList.get(j).getPrice() <= Integer.parseInt(TypeSoTienMaxThongke))
+                                TongTien += thuUserList.get(j).getPrice();
+                        }
+                        else
                             TongTien += thuUserList.get(j).getPrice();
                     }
-                    else
-                        TongTien += thuUserList.get(j).getPrice();
                 }
-            }
 
-            if(TongTien > 0)
-                visitors.add(new BarEntry(i, TongTien));
+                if(TongTien > 0)
+                    visitors.add(new BarEntry(i, TongTien));
+            }
         }
+        else
+        {
+            for(int i = 0; i < 31; i++){
+                int TongTien = 0;
+                for(int j = 0 ; j < UserListSize; j++){
+                    if(chiUserList.get(j).getDated() == i && chiUserList.get(j).getMonth() == Thang)
+                    {
+                        if(!TypeSoTienMinThongke.equals("") && !TypeSoTienMaxThongke.equals("")) {
+                            if (chiUserList.get(j).getPrice() >= Integer.parseInt(TypeSoTienMinThongke) && chiUserList.get(j).getPrice() <= Integer.parseInt(TypeSoTienMaxThongke))
+                                TongTien += chiUserList.get(j).getPrice();
+                        }
+                        else
+                            TongTien += chiUserList.get(j).getPrice();
+                    }
+                }
+
+                if(TongTien > 0)
+                    visitors.add(new BarEntry(i, TongTien));
+            }
+        }
+
         BarDataSet barDataSet = new BarDataSet(visitors,"Ngày");
         barDataSet.setColors(Color.parseColor("#fa5246"));
         barDataSet.setValueTextColor(Color.BLACK);
@@ -113,22 +146,51 @@ public class ChiTietThongKe extends AppCompatActivity {
     }
     private void ThongKeNam(int min, int max, String TypeLoaiThongke){
         User UserBarData = User.getInstance();
-        List<ThuUser> thuUserList = UserBarData.getListThu();
-        List<ChiUser> chiUserList = UserBarData.getListChi();
-        int thuUserListSize = thuUserList.size();
+        List<ThuUser> thuUserList = null;
+        List<ChiUser> chiUserList = null;
+        int UserListSize = 0;
+        if(TypeLoaiThongke.equals("Thu"))
+        {
+            thuUserList = UserBarData.getListThu();
+            UserListSize = thuUserList.size();
+        }
+        else
+        {
+            chiUserList = UserBarData.getListChi();
+            UserListSize = chiUserList.size();
+        }
 
         ArrayList<BarEntry> visitors = new ArrayList<>();
-        for(int i = min; i < max; i++){
-            int TongTien = 0;
-            for(int j = 0 ; j < thuUserListSize; j++){
-                if(thuUserList.get(j).getYear() == i && thuUserList.get(i).getType().equals(TypeLoaiThongke))
-                {
-                    TongTien += thuUserList.get(j).getPrice();
+
+        if(TypeLoaiThongke.equals("Thu"))
+        {
+            for(int i = min; i < max; i++){
+                int TongTien = 0;
+                for(int j = 0 ; j < UserListSize; j++){
+                    if(thuUserList.get(j).getYear() == i)
+                    {
+                        TongTien += thuUserList.get(j).getPrice();
+                    }
                 }
+                if(TongTien > 0)
+                    visitors.add(new BarEntry(i, TongTien));
             }
-            if(TongTien > 0)
-                visitors.add(new BarEntry(i, TongTien));
         }
+        else
+        {
+            for(int i = min; i < max; i++){
+                int TongTien = 0;
+                for(int j = 0 ; j < UserListSize; j++){
+                    if(chiUserList.get(j).getYear() == i)
+                    {
+                        TongTien += chiUserList.get(j).getPrice();
+                    }
+                }
+                if(TongTien > 0)
+                    visitors.add(new BarEntry(i, TongTien));
+            }
+        }
+
         BarDataSet barDataSet = new BarDataSet(visitors,"Năm");
         barDataSet.setColors(Color.parseColor("#fa5246"));
         barDataSet.setValueTextColor(Color.BLACK);

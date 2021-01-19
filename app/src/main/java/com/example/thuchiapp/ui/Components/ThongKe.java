@@ -81,8 +81,7 @@ public class ThongKe extends Fragment {
         View view = inflater.inflate(R.layout.fragment_thong_ke, container, false);
 
         final Spinner spinnerThoiGianThongke = (Spinner) view.findViewById(R.id.SpinnerThoiGianThongKe);
-        Spinner spinnerloaiThongke = (Spinner) view.findViewById(R.id.SpinnerLoaiThongKe);
-        LoaiThongke = spinnerloaiThongke.getSelectedItem().toString();
+        final Spinner spinnerloaiThongke = (Spinner) view.findViewById(R.id.SpinnerLoaiThongKe);
         final EditText soTienMinet = (EditText) view.findViewById(R.id.SoTienMinThongKe);
         final EditText soTienMaxet = (EditText) view.findViewById(R.id.SoTienMaxThongKe);
         Button WatchBarChartThongKe_btn = (Button) view.findViewById(R.id.WatchBarChartThongke);
@@ -92,7 +91,7 @@ public class ThongKe extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ChiTietThongKe.class);
                 intent.putExtra("TypeThoiGianThongke", spinnerThoiGianThongke.getSelectedItem().toString());
-                intent.putExtra("TypeLoaiThongke", LoaiThongke);
+                intent.putExtra("TypeLoaiThongke", spinnerloaiThongke.getSelectedItem().toString());
                 intent.putExtra("TypeSoTienMinThongke", soTienMinet.getText().toString());
                 intent.putExtra("TypeSoTienMaxThongke", soTienMaxet.getText().toString());
                 startActivity(intent);

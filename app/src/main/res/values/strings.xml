@@ -56,6 +56,26 @@
         <item>Xăng</item>
         <item>Chi tiêu cá nhân</item>
     </string-array>
+    <string-array name="thang">
+        <item>Tháng 1</item>
+        <item>Tháng 2</item>
+        <item>Tháng 3</item>
+        <item>Tháng 4</item>
+        <item>Tháng 5</item>
+        <item>Tháng 6</item>
+        <item>Tháng 7</item>
+        <item>Tháng 8</item>
+        <item>Tháng 9</item>
+        <item>Tháng 10</item>
+        <item>Tháng 11</item>
+        <item>Tháng 12</item>
+    </string-array>
+    <string-array name="nam">
+    <item>Năm 2018</item>
+    <item>Năm 2019</item>
+    <item>Năm 2020</item>
+    <item>Năm 2021</item>
+</string-array>
     <string-array name="loai_thu">
 
         <item>Tiền lương</item>
