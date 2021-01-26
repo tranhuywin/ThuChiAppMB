@@ -66,10 +66,13 @@ https://drive.google.com/drive/u/0/folders/1MH_dOA1Wt8jtha1ZjrkCfcUTHY7z_7nE
 ## Tác giả
 
 Trần Huy Win - 18521686
+https://www.facebook.com/I.Am.Tran.Huy.Win/
 
 Lê Tuấn Anh   - 18520451
+https://www.facebook.com/nhaituananh
 
 Phạm Thiên Long - 18521052
+https://www.facebook.com/RaizKnightz
 ## Giấy phép
 
     Copyright 2014
