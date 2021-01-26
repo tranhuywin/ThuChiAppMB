@@ -7,7 +7,12 @@
  Mỗi Người cần có 1 thứ gì đó để quản lý thi chi cá nhân vì vậy app thu chi cá nhân cần có trong thiết bị di động của mỗi người.
 
 
-## Chức năng:
+## Driver:
+https://drive.google.com/drive/u/0/folders/1MH_dOA1Wt8jtha1ZjrkCfcUTHY7z_7nE
+- Driver gồm có:
+   + Video ứng dụng.
+   + file báo cáo.
+   + Link github.
 
 ## Yêu cầu thiết bị:
 
