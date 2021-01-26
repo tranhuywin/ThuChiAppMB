@@ -19,23 +19,23 @@ https://drive.google.com/drive/u/0/folders/1MH_dOA1Wt8jtha1ZjrkCfcUTHY7z_7nE
 - Thêm chi, chỉnh sửa, xóa chi cá nhân.
 - Xem thống kê, theo ngày, tháng, năm của từng loại( thu, chi).
 - Chỉnh sửa tài khoản cá nhân.
-Đăng nhập:
+<p>Đăng nhập:</p>
 
 ![alt text](https://user-images.githubusercontent.com/57520628/105848850-27e61500-6012-11eb-9e65-b85c425d0b9b.png)
-Tạo tài khoản:
+<p>Tạo tài khoản:</p>
 
 ![alt text](https://user-images.githubusercontent.com/57520628/105848867-2b799c00-6012-11eb-97f5-2a85f17a466b.png)
-Chỉnh sửa tài khoản:
+<p>Chỉnh sửa tài khoản:</p>
 
 ![alt text](https://user-images.githubusercontent.com/57520628/105848883-2fa5b980-6012-11eb-9fae-68710ee2143b.png)
-Thống kê thu chi:
+<p>Thống kê thu chi:</p>
 
 ![alt text](https://user-images.githubusercontent.com/57520628/105848928-40562f80-6012-11eb-9ad2-93a9e622c1af.png)
-Chi:
+<p>Chi:</p>
 
 ![alt text](https://user-images.githubusercontent.com/57520628/105848938-43512000-6012-11eb-97e7-752338183a4b.png)
 ![alt text](https://user-images.githubusercontent.com/57520628/105848944-464c1080-6012-11eb-9ea3-2a4433e34d32.png)
-Thu:
+<p>Thu:</p>
 
 ![alt text](https://user-images.githubusercontent.com/57520628/105848952-49df9780-6012-11eb-812b-0d3ea07e2f31.png)
 ![alt text](https://user-images.githubusercontent.com/57520628/105848960-4cda8800-6012-11eb-9e72-da25ec44dc41.png)
