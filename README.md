@@ -13,7 +13,20 @@ https://drive.google.com/drive/u/0/folders/1MH_dOA1Wt8jtha1ZjrkCfcUTHY7z_7nE
    + Video ứng dụng.
    + file báo cáo.
    + Link github.
-
+   
+## Chức Năng:
+- Thêm thu, chỉnh sửa, xóa thu cá nhân.
+- Thêm chi, chỉnh sửa, xóa chi cá nhân.
+- Xem thống kê, theo ngày, tháng, năm của từng loại( thu, chi).
+- Chỉnh sửa tài khoản cá nhân.
+## Database:
+- Gồm 3 bảng chính đó: User, Thu, Chi.
+- user:
+https://user-images.githubusercontent.com/57520628/105848441-8f4f9500-6011-11eb-900c-2355bcc467a0.png
+- Thu:
+https://user-images.githubusercontent.com/57520628/105848443-9080c200-6011-11eb-80cd-3c0de2508030.png
+- Chi:
+(https://user-images.githubusercontent.com/57520628/105848268-52839e00-6011-11eb-85d6-f0507747d330.png)
 ## Yêu cầu thiết bị:
 
    - Android:
