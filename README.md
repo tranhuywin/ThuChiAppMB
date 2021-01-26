@@ -1,23 +1,13 @@
 # Đồ Án Nhập Môn Di Động
 
-## Travel App
+## Thu Chi Cá Nhân
 
    
 
- Bên cạnh sự phát triển nhanh chóng của các trang web, việc tạo ra các ứng dụng di động
-cũng đang một ngày gia tăng do nhu cầu sử dụng của người dùng và tính tiện dụng của nó.
-Có thể thấy rằng, du lịch là một đề tài chưa bao giờ hết nóng bởi tính thiết yếu có nó đối với
-cuộc sống của mọi người. Các trang web về địa điểm du lịch thì có nhiều, nhưng người dùng
-không thể nào vừa đi mà vừa tra các trang website về địa điểm du lịch do tính thiếu tiện dụng.<br>
- Hiểu được vấn đề đó, nhóm đã quyết định tạo ra ứng dụng di động Travel App để đáp
-ứng được nhu cầu tra cứu về thông tin của các địa điểm du lịch.
+ Mỗi Người cần có 1 thứ gì đó để quản lý thi chi cá nhân vì vậy app thu chi cá nhân cần có trong thiết bị di động của mỗi người.
 
 
 ## Chức năng:
-
-   <p align="center">
-   <img src="https://i.ibb.co/nj0HH5g/Feature.png" width="750">
-   </p>
 
 ## Yêu cầu thiết bị:
 
@@ -27,8 +17,6 @@ không thể nào vừa đi mà vừa tra các trang website về địa điểm
      + Min sdk: 16
      + Target sdk: 29
 
-## Diagram:
-![image](https://user-images.githubusercontent.com/56749834/105780197-84115080-5fa2-11eb-8556-264c9ac96eef.png)
 
 ## Công nghệ sử dụng:
 
